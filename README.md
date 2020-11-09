@@ -1,4 +1,4 @@
 # Parking-JS
 Primer proyectito en JS sobre un parking.
 
-Añadido diagrama UML.
+1) Añadido diagrama UML.
