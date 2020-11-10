@@ -1,10 +1,8 @@
 # Parking-JS
-Primer proyectito en JS sobre un parking.
+## Primer proyectito en JS sobre un parking robotizado.
 
-Añadido diagrama UML.
+### Añadido diagrama UML. (Pendiente de revisar)
+![img](Parking.jpg "Diagrama UML")
 
-![img1](Parking.jpg "Diagrama UML")
-
-Añadida estructura de ficheros.
-
-![img2](Estructura de ficheros.jpg "Estructura de ficheros")
+### Añadida estructura de ficheros. (Pendiente de revisar) 
+![img](Estructura_de_ficheros.jpg "Estructura de ficheros")
