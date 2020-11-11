@@ -1,1 +1,30 @@
-{}
+{
+    "type": "module",
+    "name": "parking",
+    "description": "Primer proyecto JS, sobre un parking",
+    "version": "1.0.0",
+    "main": "./modules/main.js",
+    "scripts": {
+        "start": "node ./modules/main.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/danielcdc/Parking-JS.git"
+    },
+    "keywords": [
+        "parking",
+        "robotizado",
+        "proyecto",
+        "js"
+    ],
+    "author": "Daniel Cano de Celis",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/danielcdc/Parking-JS/issues"
+    },
+    "homepage": "https://github.com/danielcdc/Parking-JS#readme",
+    "dependencies": {
+        "readline-sync": "^1.4.10"
+    }
+}
