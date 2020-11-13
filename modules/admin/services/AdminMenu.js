@@ -1,6 +1,6 @@
 import * as vista_admin from "../../admin/views/Vista_MenuAdmin.js"
 import * as readline from 'readline-sync';
-import { check_parking } from "./AdminService.js";
+import { alta_abonado, check_parking } from "./AdminService.js";
 
 /**
  * Menú de navegación del administrador.
@@ -36,13 +36,14 @@ export function menu_admin() {
  * Menu que presenta las diferentes opciones disponibles para el administrador 
  * sobre la gestión de abonados. ("Zona Administrador: Abonos" del PDF)
  */
-function menu_abonados(){
+function menu_abonados() {
     let salir = false;
-    do{
+    do {
         vista_admin.print_menu_abonados();
         let op1 = Number.parseInt(readline.questionInt("Introduzca aquí su opcion y pulse Enter: \n"));
-        switch(op1){  
+        switch (op1) {
             case 1: // Alta
+                alta_abonado();
                 break;
             case 2: // Modificacion
                 break;
@@ -58,5 +59,5 @@ function menu_abonados(){
             default:
                 vista_admin.print_error();
         }
-    }while(!salir)
+    } while (!salir)
 }

@@ -1,7 +1,11 @@
 import * as repository from "../../parking/repository/PlazasRepository.js"
+import * as tarifas from "../../parking/repository/TarifasRepository.js"
 import * as utils from "../../utilities/Utilities.js"
 import * as readline from 'readline-sync';
 import * as vista_parking from "../../parking/views/Vista_AsignarPlaza.js"
+import { print_tipos_abonos } from "../views/Vista_MenuAbonos.js"
+// import { Abono } from "../model/Abono.js"
+// import { Cliente } from "../../cliente/model/Cliente.js"
 
 /**
  * Comprueba el estado del parking.
@@ -44,22 +48,103 @@ function estado_plaza(plaza) {
 /**
  * Dar de alta a un cliente abonado.
  */
-export function alta_abonado(){
-    let dni = utils.generar_dni();
-    let name = readline.question("Introduce un nombre: ");
-    let apellidos = readline.question("Introduce apellidos: ");
-    let numTarjeta = readline.questionInt("Introduce una tarjeta de crédito: ");
-    let email = readline.questionEMail("Introduce un email de contacto: ");
+export function alta_abonado() {
+    let tipo = elegir_tipo_vehículo();
+    console.log(tipo);
+    if (tipo = !undefined) {
+        let plaza_ocupada = asignar_plaza_abonado(tipo);
+        let tarifa_elegida = elegir_tipo_abono();
+        let dni = utils.generar_dni();
+        let name = readline.question("Introduce un nombre: ");
+        let apellidos = readline.question("Introduce apellidos: ");
+        let numTarjeta = readline.questionInt("Introduce una tarjeta de crédito: ");
+        let email = readline.questionEMail("Introduce un email de contacto: ");
+    }
 
 }
 
-function elegir_tipo_vehículo(){
+function elegir_tipo_vehículo() {
     let salir = false;
-    do{
+    do {
         vista_parking.print_elegir_plaza();
-        op = readline.questionInt("¿Qué tipo de vehículo dispone?");
-        switch(op){
+        let op = readline.questionInt("Introduzca la opción deseada y pulse Enter: ");
+        switch (op) {
+            case 1:
+                return "Turismo";
+            case 2:
+                return "Motocicleta";
+            case 3:
+                return "Caravana"
+            case 0:
+                break;
+            default:
+                vista_parking.print_error();
+        }
+    } while (!salir)
+}
+
+/**
+ * Comprueba si hay una plaza disponible para reservarse a un usuario ABONADO.
+ * Solo podrán reservarse aquellas plazas que que esten LIBRES (sin ocupar y sin reservar).
+ * @param {string} tipo Tipo de vehículo.
+ */
+function asignar_plaza_abonado(tipo) {
+    let plaza_libre = false;
+    if (tipo === "Turismo") {
+        for (let index = 0; index < repository.plazas_turismo.length; index++) {
+            if (!repository.plazas_turismo[index].ocupada && repository.plazas_turismo[index].abono == null) {
+                plaza_libre = true;
+                repository.plazas_turismo[index].ocupada = true;
+                return repository.plazas_turismo[index].id_plaza;
+            }
 
         }
-    }while(!salir)
+    }
+    if (tipo === "Motocicleta") {
+        for (let index = 0; index < repository.plazas_motocicletas.length; index++) {
+            if (!repository.plazas_motocicletas[index].ocupada && repository.plazas_motocicletas[index].abono == null) {
+                plaza_libre = true;
+                repository.plazas_motocicletas[index].ocupada = true;
+                return repository.plazas_motocicletas[index].id_plaza;
+            }
+
+        }
+    }
+    if (tipo === "Caravana") {
+        for (let index = 0; index < repository.plazas_caravanas.length; index++) {
+            if (!repository.plazas_caravanas[index].ocupada && repository.plazas_caravanas[index].abono == null) {
+                plaza_libre = true;
+                repository.plazas_caravanas[index].ocupada = true;
+                return repository.plazas_caravanas[index].id_plaza;
+            }
+
+        }
+    }
+    if (!plaza_libre) {
+        vista_parking.print_sin_plazas();
+    }
+}
+
+function elegir_tipo_abono() {
+    print_tipos_abonos();
+    let salir = false;
+    do {
+        let op = readline.questionInt("Introduzca una opción entre las disponibles y pulse Enter: ");
+        switch (op) {
+            case 1:
+                return tarifas.tarifa_abonados[op - 1];
+            case 2:
+                return tarifas.tarifa_abonados[op - 1];
+            case 3:
+                return tarifas.tarifa_abonados[op - 1];
+            case 4:
+                return tarifas.tarifa_abonados[op - 1];
+            case 0:
+                salir = true;
+                break;
+            default:
+                vista_parking.print_error();
+        }
+
+    } while (!salir)
 }

@@ -1,11 +1,9 @@
-import { CLIENT_RENEG_WINDOW } from "tls";
-
 export function print_elegir_plaza() {
     console.log("¿Qué tipo de vehículo desea aparcar?");
     console.log("[1] Turismo");
     console.log("[2] Motocicleta");
     console.log("[3] Caravana");
-    console.log("[0] Salir\n");
+    console.log("[0] Volver\n");
 }
 
 export function print_plaza_asginada(plaza) {
