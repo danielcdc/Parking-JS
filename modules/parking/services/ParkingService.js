@@ -4,7 +4,9 @@ import * as readline from 'readline-sync';
 import * as expendora from "../services/TicketServicio.js";
 
 /**
- * Menú para los usuarios no abonados. Introduce por teclado una opción de 
+ * Permite a un usuario no abonado elegir el tipo de vehículo que desea aparcar.
+ * Si ha sido posible aparcar su vehículo se le informa por consola. Igual en caso
+ * de no de disponer de plaza.
  */
 export function menu_elegir_plaza() {
     vistas.print_elegir_plaza();

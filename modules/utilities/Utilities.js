@@ -35,3 +35,24 @@ export function generar_matricula() {
 function num_aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function formatNumberLength(num, length) {
+    var r = "" + num;
+    while ( r.length < length ) {
+      r = "0" + r;
+    }
+    return r;
+  }
+  
+function charDNI(dni) {
+    var chain = "TRWAGMYFPDXBNJZSQVHLCKET";
+    var pos = dni % 23;
+    var letter = chain.substring( pos, pos + 1 );
+    return letter;
+  }
+  
+export function generar_dni() {
+    num = Math.floor( ( Math.random() * 100000000 ) );
+    sNum = formatNumberLength( num, 8 );
+    return sNum + charDNI( sNum );
+  }
