@@ -25,6 +25,8 @@
     },
     "homepage": "https://github.com/danielcdc/Parking-JS#readme",
     "dependencies": {
+        "moment": "^2.29.1",
+        "node": "^15.2.0",
         "readline-sync": "^1.4.10"
     }
 }

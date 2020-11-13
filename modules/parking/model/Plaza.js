@@ -1,4 +1,4 @@
-import { tarifa_estandar } from "../repository/TarifasRepository"
+import { tarifa_estandar } from "../repository/TarifasRepository.js"
 export class Plaza {
     /**
      * Representa una plaza de aparcamiento en un tipo determinado.

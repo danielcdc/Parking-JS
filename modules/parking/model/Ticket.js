@@ -1,9 +1,14 @@
-class Ticket {
+import * as utils from "../../utilities/Utilities.js"
+import moment from "moment"
 
-    constructor(matricula, fecha_deposito, id_plaza, pin) {
-        this.matricula = matricula;
-        this.fecha_deposito = fecha_deposito;
+export class Ticket {
+
+    constructor(id_plaza) {
+        this.matricula = utils.generar_matricula();
         this.id_plaza = id_plaza;
-        this.pin = pin;
+        this.pin = utils.generar_pin(); // Se generará automaticamente con una función.
+        this.fecha_deposito = moment().format();
+        this.fecha_salida = null;
+        this.facturado = null;
     }
 }
