@@ -3,9 +3,8 @@ export function print_menu() {
     console.log("\n******Bienvenido a Parking-DAM******");
     console.log("-------------------------------------");
     console.log("Seleccione una opción:\n");
-    console.log("[1] Depositar vehículo");
-    console.log("[2] Retirar vehículo");
-    console.log("[3] Soy Administrador --> ¿Eres Luismi? ¡Selecciona esta opción!");
+    console.log("[1] Soy Cliente");
+    console.log("[2] Soy Administrador --> ¿Eres Luismi? ¡Selecciona esta opción!");
     console.log("[0] Salir\n");
 }
 

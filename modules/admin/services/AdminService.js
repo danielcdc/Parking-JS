@@ -20,16 +20,16 @@ export function check_parking() {
 function estado_plaza(plaza) {
     if (!plaza.ocupada) {
         if (plaza.abono == null) {
-            console.log(`La plaza ${plaza.id_plaza} esta libre.`);
+            console.log(`Plaza [${plaza.id_plaza}]: LIBRE`);
         } else {
-            console.log(`La plaza ${plaza.id_plaza} esta libre pero reservada.`);
+            console.log(`Plaza [${plaza.id_plaza}]: RESERVADA`);
         }
     }
     if (plaza.ocupada) {
         if (plaza.abono != null) {
-            console.log(`La plaza ${plaza.id_plaza} esta ocupada por un abonado.`);
+            console.log(`Plaza [${plaza.id_plaza}]: OCUPADA/ABONADO.`);
         } else {
-            console.log(`La plaza ${plaza.id_plaza} esta ocupada.`);
+            console.log(`Plaza [${plaza.id_plaza}]: OCUPADA`);
         }
     }
 
